@@ -1,0 +1,7 @@
+<script>
+    fetch("https://raw.githubusercontent.com/fxs1400/boom-kids/refs/heads/main/api.txt").then(function (respone) {
+        return respone.text()
+    }).then(function (data) {
+        document.write('<h1>posts</h1>' + data);
+    })
+</script>
