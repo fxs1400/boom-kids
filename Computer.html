@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>50x50 Pixel Computer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>50x50 Pixel Computer</h1>
+
+  <!-- الشاشة -->
+  <canvas id="screen" width="50" height="50"></canvas>
+
+  <!-- لوحة المفاتيح الافتراضية -->
+  <div id="keyboard">
+    <button data-key="A">A</button>
+    <button data-key="B">B</button>
+    <button data-key="C">C</button>
+    <button data-key="D">D</button>
+    <button data-key="E">E</button>
+    <button data-key="F">F</button>
+    <button data-key="G">G</button>
+    <button data-key="H">H</button>
+    <button data-key="I">I</button>
+    <button data-key="J">J</button>
+    <button data-key="K">K</button>
+    <button data-key="L">L</button>
+    <button data-key="M">M</button>
+    <button data-key="N">N</button>
+    <button data-key="O">O</button>
+    <button data-key="P">P</button>
+    <button data-key="Q">Q</button>
+    <button data-key="R">R</button>
+    <button data-key="S">S</button>
+    <button data-key="T">T</button>
+    <button data-key="U">U</button>
+    <button data-key="V">V</button>
+    <button data-key="W">W</button>
+    <button data-key="X">X</button>
+    <button data-key="Y">Y</button>
+    <button data-key="Z">Z</button>
+    <button data-key="SPACE">Space</button>
+    <button data-key="ENTER">Enter</button>
+  </div>
+
+  <script>// إعداد الشاشة
+const canvas = document.getElementById('screen');
+const ctx = canvas.getContext('2d');
+
+// تكبير حجم الشاشة على المتصفح
+canvas.style.width = '500px';
+canvas.style.height = '500px';
+
+// رسم شبكة البكسلات
+function drawGrid() {
+  for (let x = 0; x < 50; x++) {
+    for (let y = 0; y < 50; y++) {
+      ctx.fillStyle = '#000'; // لون البكسل
+      ctx.fillRect(x, y, 1, 1); // بكسل 1x1
+    }
+  }
+}
+
+// رسم النصوص على الشاشة (مثل ألعاب الحاسوب القديمة)
+function drawText(x, y, text) {
+  ctx.fillStyle = '#FFF'; // لون النص
+  ctx.font = '1px Arial'; // حجم النص صغير جدًا
+  ctx.fillText(text, x, y);
+}
+
+// استدعاء الدالة لرسم الشبكة عند التحميل
+drawGrid();
+
+// لوحة المفاتيح الافتراضية
+const keyboard = document.getElementById('keyboard');
+keyboard.addEventListener('click', (e) => {
+  if (e.target.tagName === 'BUTTON') {
+    const key = e.target.dataset.key;
+    handleKeyPress(key);
+  }
+});
+
+// التعامل مع ضغط الأزرار
+function handleKeyPress(key) {
+  if (key === 'SPACE') {
+    console.log('Space pressed!');
+  } else if (key === 'ENTER') {
+    console.log('Enter pressed!');
+  } else {
+    console.log(`Key pressed: ${key}`);
+    drawText(10, 10, key); // عرض الحرف على الشاشة
+  }
+}</script>
+  <stlye>body {
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+#screen {
+  display: block;
+  margin: 20px auto;
+  border: 2px solid #ffffff;
+  background-color: #000000;
+  image-rendering: pixelated;
+}
+
+#keyboard {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  justify-content: center;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+button {
+  background-color: #444444;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #666666;
+}
+
+button:active {
+  background-color: #888888;
+}</stlye>
+</body>
+      </html>
